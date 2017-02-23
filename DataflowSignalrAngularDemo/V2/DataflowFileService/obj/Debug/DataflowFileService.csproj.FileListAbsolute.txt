@@ -1,0 +1,7 @@
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\bin\Debug\DataflowFileService.dll
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\bin\Debug\DataflowFileService.pdb
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\bin\Debug\Newtonsoft.Json.dll
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\obj\Debug\DataflowFileService.dll
+C:\DATA\Git\DataflowSignalrAngularDemo\V2\DataflowFileService\obj\Debug\DataflowFileService.pdb
