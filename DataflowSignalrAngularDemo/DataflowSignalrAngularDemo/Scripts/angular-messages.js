@@ -554,7 +554,6 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    */
   .directive('ngMessagesInclude',
     ['$templateRequest', '$document', '$compile', function($templateRequest, $document, $compile) {
-
     return {
       restrict: 'AE',
       require: '^^ngMessages', // we only require this for validation sake
@@ -624,7 +623,6 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    * @param {expression} ngMessage|when a string value corresponding to the message key.
    */
   .directive('ngMessage', ngMessageDirectiveFactory())
-
 
   /**
    * @ngdoc directive
@@ -734,6 +732,4 @@ function ngMessageDirectiveFactory() {
     }
   }
 }
-
-
 })(window, window.angular);

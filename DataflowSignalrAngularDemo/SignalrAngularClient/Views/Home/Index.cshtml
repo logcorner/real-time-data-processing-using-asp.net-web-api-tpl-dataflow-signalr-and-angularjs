@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Receiver";
+}
+<h4></h4>
+<p>This view subscribes to the dashboardHub</p>
+<div data-ng-controller="dashboardCtrl as wdgt">
+    <span class="bold h4">Reveivers</span>
+    <ul>
+        <li ng-repeat="dashboard in Processor">
+            <div ng-class="{'btn btn-success' : dashboard.Name=='Receiver A','btn btn-info' : dashboard.Name=='Receiver B','btn btn-warning' : dashboard.Name=='Receiver C'}">
+                <span class="bold">Name :</span>  {{dashboard.Name}}
+            </div>
+            <div>
+                <span class="bold">OrderID:</span> {{dashboard.OrderId}}
+            </div>
+            <div>
+                <span class="bold">Date Receipt:</span> {{dashboard.Date}}
+            </div>
+        </li>
+    </ul>
+    <span class="bold h4">Sales Order Detail</span>
+    <ul>
+        <li data-ng-repeat="item in SalesOrderDetail">
+
+            <div>
+                <span class="bold">SalesOrderDetailID :</span> {{item.SalesOrderDetailID }}
+            </div>
+
+            <div>
+                <span class="bold">SalesPersonName:</span> {{item.SalesPersonName}}
+            </div>
+
+            <div>
+                <span class="bold">CarrierTrackingNumber :</span> {{item.CarrierTrackingNumber }}
+            </div>
+
+            <div>
+                <span class="bold">OrderQty :</span> {{item.OrderQty }}
+            </div>
+
+            <div>
+                <span class="bold">PriceDiscount :</span> {{item.PriceDiscount }}
+            </div>
+
+            <div>
+                <span class="bold">LineTotal :</span> {{item.LineTotal }}
+            </div>
+
+            <div>                <span class="bold">Date :</span> {{item.Date }}
+            </div>
+            <div>
+
+                <span class="bold h4">Products List </span>
+                <ul>
+
+                    <li data-ng-repeat="product in item.Products">
+                        <table>
+                            <tr>
+                                <td><span class="bold">ProductID :</span> {{product.ProductID}}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Price :</span>{{product.Price}}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Qty :</span>{{product.Qty}}</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

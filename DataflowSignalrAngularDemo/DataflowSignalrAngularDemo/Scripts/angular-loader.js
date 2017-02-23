@@ -15,7 +15,6 @@ function serializeObject(obj) {
   return JSON.stringify(obj, function(key, val) {
     val = toJsonReplacer(key, val);
     if (isObject(val)) {
-
       if (seen.indexOf(val) >= 0) return '...';
 
       seen.push(val);
@@ -109,7 +108,6 @@ function minErr(module, ErrorConstructor) {
  */
 
 function setupModuleLoader(window) {
-
   var $injectorMinErr = minErr('$injector');
   var ngMinErr = minErr('ng');
 
@@ -233,7 +231,6 @@ function setupModuleLoader(window) {
            * Name of the module.
            */
           name: name,
-
 
           /**
            * @ngdoc method
@@ -459,7 +456,6 @@ function setupModuleLoader(window) {
       });
     };
   });
-
 }
 
 setupModuleLoader(window);
@@ -482,4 +478,3 @@ setupModuleLoader(window);
  * } }
  */
 angular.Module;
-

@@ -4,7 +4,6 @@
  * License: MIT
  */
 (function(window, angular) {
-
 'use strict';
 
 /**
@@ -48,7 +47,6 @@ angular.mock.$Browser = function() {
   self.$$completeOutstandingRequest = angular.noop;
   self.$$incOutstandingRequestCount = angular.noop;
 
-
   // register url polling fn
 
   self.onUrlChange = function(listener) {
@@ -78,7 +76,6 @@ angular.mock.$Browser = function() {
     return self.deferredNextId++;
   };
 
-
   /**
    * @name $browser#defer.now
    *
@@ -86,7 +83,6 @@ angular.mock.$Browser = function() {
    * Current milliseconds mock time.
    */
   self.defer.now = 0;
-
 
   self.defer.cancel = function(deferId) {
     var fnIndex;
@@ -102,7 +98,6 @@ angular.mock.$Browser = function() {
 
     return false;
   };
-
 
   /**
    * @name $browser#defer.flush
@@ -144,7 +139,6 @@ angular.mock.$Browser = function() {
   };
 };
 angular.mock.$Browser.prototype = {
-
   /**
    * @name $browser#poll
    *
@@ -179,7 +173,6 @@ angular.mock.$Browser.prototype = {
     fn();
   }
 };
-
 
 /**
  * @ngdoc provider
@@ -246,7 +239,6 @@ angular.mock.$ExceptionHandlerProvider = function() {
    *     a log of thrown errors in `$exceptionHandler.errors`.
    */
   this.mode = function(mode) {
-
     switch (mode) {
       case 'log':
       case 'rethrow':
@@ -274,7 +266,6 @@ angular.mock.$ExceptionHandlerProvider = function() {
 
   this.mode('rethrow');
 };
-
 
 /**
  * @ngdoc service
@@ -426,7 +417,6 @@ angular.mock.$LogProvider = function() {
   };
 };
 
-
 /**
  * @ngdoc service
  * @name $interval
@@ -558,7 +548,6 @@ angular.mock.$IntervalProvider = function() {
   }];
 };
 
-
 function jsonStringToDate(string) {
   // The R_ISO8061_STR regex is never going to fit into the 100 char limit!
   // eslit-disable-next-line max-len
@@ -600,7 +589,6 @@ function padNumberInMock(num, digits, trim) {
   }
   return neg + num;
 }
-
 
 /**
  * @ngdoc type
@@ -767,7 +755,6 @@ angular.mock.TzDate = function(offset, timestamp) {
 //make "tzDateInstance instanceof Date" return true
 angular.mock.TzDate.prototype = Date.prototype;
 
-
 /**
  * @ngdoc service
  * @name $animate
@@ -781,7 +768,6 @@ angular.mock.TzDate.prototype = Date.prototype;
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
 
   .config(['$provide', function($provide) {
-
     $provide.factory('$$forceReflow', function() {
       function reflowFn() {
         reflowFn.totalReflows++;
@@ -933,9 +919,7 @@ angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
 
       return animate;
     }]);
-
   }]);
-
 
 /**
  * @ngdoc function
@@ -1163,12 +1147,10 @@ angular.mock.dump = function(object) {
          };
        }));
 
-
        afterEach(function() {
          $httpBackend.verifyNoOutstandingExpectation();
          $httpBackend.verifyNoOutstandingRequest();
        });
-
 
        it('should fetch authentication token', function() {
          $httpBackend.expectGET('/auth.py');
@@ -1176,9 +1158,7 @@ angular.mock.dump = function(object) {
          $httpBackend.flush();
        });
 
-
        it('should fail authentication', function() {
-
          // Notice how you can change the response even after it was set
          authRequestHandler.respond(401, '');
 
@@ -1187,7 +1167,6 @@ angular.mock.dump = function(object) {
          $httpBackend.flush();
          expect($rootScope.status).toBe('Failed...');
        });
-
 
        it('should send msg to server', function() {
          var controller = createController();
@@ -1204,7 +1183,6 @@ angular.mock.dump = function(object) {
          $httpBackend.flush();
          expect($rootScope.status).toBe('');
        });
-
 
        it('should send auth header', function() {
          var controller = createController();
@@ -1339,7 +1317,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
 
   // TODO(vojta): change params to: method, url, data, headers, callback
   function $httpBackend(method, url, data, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers) {
-
     var xhr = new MockXhr(),
         expectation = expectations[0],
         wasExpected = false;
@@ -1450,7 +1427,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *    the `requestHandler` object for possible overrides.
    */
   $httpBackend.when = function(method, url, data, headers, keys) {
-
     assertArgDefined(arguments, 1, 'url');
 
     var definition = new MockHttpExpectation(method, url, data, headers, keys),
@@ -1645,7 +1621,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *    the `requestHandler` object for possible overrides.
    */
   $httpBackend.expect = function(method, url, data, headers, keys) {
-
     assertArgDefined(arguments, 1, 'url');
 
     var expectation = new MockHttpExpectation(method, url, data, headers, keys),
@@ -1791,7 +1766,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     return $httpBackend.expect(method, pathObj.regexp, undefined, undefined, pathObj.keys);
   };
 
-
   /**
    * @ngdoc method
    * @name $httpBackend#flush
@@ -1829,7 +1803,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     $httpBackend.verifyNoOutstandingExpectation(digest);
   };
 
-
   /**
    * @ngdoc method
    * @name $httpBackend#verifyNoOutstandingExpectation
@@ -1851,7 +1824,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     }
   };
 
-
   /**
    * @ngdoc method
    * @name $httpBackend#verifyNoOutstandingRequest
@@ -1872,7 +1844,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     }
   };
 
-
   /**
    * @ngdoc method
    * @name $httpBackend#resetExpectations
@@ -1887,7 +1858,6 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
   };
 
   return $httpBackend;
-
 
   function createShortMethods(prefix) {
     angular.forEach(['GET', 'DELETE', 'JSONP', 'HEAD'], function(method) {
@@ -1920,9 +1890,7 @@ function assertArgDefined(args, index, name) {
   }
 }
 
-
 function MockHttpExpectation(method, url, data, headers, keys) {
-
   function getUrlParams(u) {
     var params = u.slice(u.indexOf('?') + 1).split('&');
     return params.sort();
@@ -2031,7 +1999,6 @@ function createMockXhr() {
 }
 
 function MockXhr() {
-
   // hack for testing $http, $httpBackend
   MockXhr.$$lastInstance = this;
 
@@ -2094,7 +2061,6 @@ function MockXhr() {
   };
 }
 
-
 /**
  * @ngdoc service
  * @name $timeout
@@ -2105,7 +2071,6 @@ function MockXhr() {
  */
 
 angular.mock.$TimeoutDecorator = ['$delegate', '$browser', function($delegate, $browser) {
-
   /**
    * @ngdoc method
    * @name $timeout#flush
@@ -2331,7 +2296,6 @@ angular.mock.$ComponentControllerProvider = ['$compileProvider',
     };
   }];
 }];
-
 
 /**
  * @ngdoc module
@@ -2698,7 +2662,6 @@ angular.mock.e2e = {};
 angular.mock.e2e.$httpBackendDecorator =
   ['$rootScope', '$timeout', '$delegate', '$browser', createHttpBackendMock];
 
-
 /**
  * @ngdoc type
  * @name $rootScope.Scope
@@ -2711,7 +2674,6 @@ angular.mock.e2e.$httpBackendDecorator =
  * In addition to all the regular `Scope` methods, the following helper methods are available:
  */
 angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
-
   var $rootScopePrototype = Object.getPrototypeOf($delegate);
 
   $rootScopePrototype.$countChildScopes = countChildScopes;
@@ -2751,7 +2713,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     return count;
   }
 
-
   /**
    * @ngdoc method
    * @name $rootScope.Scope#$countWatchers
@@ -2784,9 +2745,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
   }
 }];
 
-
 (function(jasmineOrMocha) {
-
   if (!jasmineOrMocha) {
     return;
   }
@@ -3100,8 +3059,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    * @param {...Function} fns any number of functions which will be injected using the injector.
    */
 
-
-
   var ErrorAddingDeclarationLocationStack = function ErrorAddingDeclarationLocationStack(e, errorForStack) {
     this.message = e.message;
     this.name = e.name;
@@ -3164,7 +3121,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
       }
     }
   };
-
 
   angular.mock.inject.strictDi = function(value) {
     value = arguments.length ? !!value : true;
@@ -3403,6 +3359,4 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     return false;
   }
 })();
-
-
 })(window, window.angular);

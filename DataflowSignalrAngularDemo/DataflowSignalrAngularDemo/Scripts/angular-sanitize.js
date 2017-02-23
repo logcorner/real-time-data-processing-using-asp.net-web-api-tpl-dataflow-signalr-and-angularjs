@@ -144,7 +144,6 @@ var htmlSanitizeWriter;
    </example>
  */
 
-
 /**
  * @ngdoc provider
  * @name $sanitizeProvider
@@ -168,7 +167,6 @@ function $SanitizeProvider() {
       return buf.join('');
     };
   }];
-
 
   /**
    * @ngdoc method
@@ -227,7 +225,6 @@ function $SanitizeProvider() {
   var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
     // Match everything outside of normal chars and " (quote character)
     NON_ALPHANUMERIC_REGEXP = /([^#-~ |!])/g;
-
 
   // Good source of info about elements and attributes
   // http://dev.w3.org/html5/spec/Overview.html#semantics
@@ -415,7 +412,6 @@ function $SanitizeProvider() {
     return map;
   }
 
-
   /**
    * Escapes all potentially dangerous characters, so that the
    * resulting string can be safely inserted into attribute or
@@ -495,7 +491,6 @@ function $SanitizeProvider() {
     };
   }
 
-
   /**
    * When IE9-11 comes across an unknown namespaced attribute e.g. 'xlink:foo' it adds 'xmlns:ns1' attribute to declare
    * ns1 namespace and prefixes the attribute with 'ns1' (e.g. 'ns1:xlink:foo'). This is undesirable since we don't want
@@ -534,7 +529,6 @@ function sanitizeText(chars) {
   writer.chars(chars);
   return buf.join('');
 }
-
 
 // define ngSanitize module and register $sanitize service
 angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
@@ -734,6 +728,4 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
     }
   };
 }]);
-
-
 })(window, window.angular);

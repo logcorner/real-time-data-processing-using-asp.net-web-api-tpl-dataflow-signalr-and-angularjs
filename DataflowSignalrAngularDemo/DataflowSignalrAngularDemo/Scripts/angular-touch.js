@@ -44,7 +44,6 @@ function nodeName_(element) {
  */
 $TouchProvider.$inject = ['$provide', '$compileProvider'];
 function $TouchProvider($provide, $compileProvider) {
-
   /**
    * @ngdoc method
    * @name  $touchProvider#ngClickOverrideEnabled
@@ -68,7 +67,6 @@ function $TouchProvider($provide, $compileProvider) {
   // eslint-disable-next-line no-invalid-this
   this.ngClickOverrideEnabled = function(enabled) {
     if (angular.isDefined(enabled)) {
-
       if (enabled && !ngClickDirectiveAdded) {
         ngClickDirectiveAdded = true;
 
@@ -130,7 +128,6 @@ function $TouchProvider($provide, $compileProvider) {
       }
     };
   };
-
 }
 
 /* global ngTouch: false */
@@ -373,7 +370,6 @@ var ngTouchClickDirectiveFactory = ['$parse', '$timeout', '$rootElement',
   var touchCoordinates;
   var lastLabelClickCoordinates;
 
-
   // TAP EVENTS AND GHOST CLICKS
   //
   // Why tap events?
@@ -477,7 +473,6 @@ var ngTouchClickDirectiveFactory = ['$parse', '$timeout', '$rootElement',
       event.target.blur();
     }
   }
-
 
   // Global touchstart handler that creates an allowable region for a click event.
   // This allowable region can be removed by preventGhostClick if we want to bust it.
@@ -605,7 +600,6 @@ var ngTouchClickDirectiveFactory = ['$parse', '$timeout', '$rootElement',
     element.on('mousemove mouseup', function(event) {
       element.removeClass(ACTIVE_CLASS_NAME);
     });
-
   };
 }];
 
@@ -741,7 +735,4 @@ function makeSwipeDirective(directiveName, direction, eventName) {
 // Left is negative X-coordinate, right is positive.
 makeSwipeDirective('ngSwipeLeft', -1, 'swipeleft');
 makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
-
-
-
 })(window, window.angular);

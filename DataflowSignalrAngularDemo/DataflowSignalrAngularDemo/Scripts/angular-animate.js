@@ -866,7 +866,6 @@ var $AnimateCssProvider = ['$animateProvider', /** @this */ function($animatePro
                '$$forceReflow', '$sniffer', '$$rAFScheduler', '$$animateQueue',
        function($window,   $$jqLite,   $$AnimateRunner,   $timeout,
                 $$forceReflow,   $sniffer,   $$rAFScheduler, $$animateQueue) {
-
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
     var parentCounter = 0;
@@ -1532,7 +1531,6 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', /** @this */ function($
 
   this.$get = ['$animateCss', '$rootScope', '$$AnimateRunner', '$rootElement', '$sniffer', '$$jqLite', '$document',
        function($animateCss,   $rootScope,   $$AnimateRunner,   $rootElement,   $sniffer,   $$jqLite,   $document) {
-
     // only browsers that support these properties can render animations
     if (!$sniffer.animations && !$sniffer.transitions) return noop;
 
@@ -1790,7 +1788,6 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', /** @this */ function($
 var $$AnimateJsProvider = ['$animateProvider', /** @this */ function($animateProvider) {
   this.$get = ['$injector', '$$AnimateRunner', '$$jqLite',
        function($injector,   $$AnimateRunner,   $$jqLite) {
-
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
          // $animateJs(element, 'enter');
     return function(element, event, classes, options) {
@@ -2240,7 +2237,6 @@ var $$AnimateQueueProvider = ['$animateProvider', /** @this */ function($animate
        function($$rAF,   $rootScope,   $rootElement,   $document,   $$Map,
                 $$animation,   $$AnimateRunner,   $templateRequest,   $$jqLite,   $$forceReflow,
                 $$isDocumentHidden) {
-
     var activeAnimationsLookup = new $$Map();
     var disabledElementsLookup = new $$Map();
     var animationsEnabled = null;
@@ -2875,7 +2871,6 @@ var $$AnimationProvider = ['$animateProvider', /** @this */ function($animatePro
 
   this.$get = ['$$jqLite', '$rootScope', '$injector', '$$AnimateRunner', '$$Map', '$$rAFScheduler',
        function($$jqLite,   $rootScope,   $injector,   $$AnimateRunner,   $$Map,   $$rAFScheduler) {
-
     var animationQueue = [];
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
@@ -4145,6 +4140,4 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
   .provider('$$animateJs', $$AnimateJsProvider)
   .provider('$$animateJsDriver', $$AnimateJsDriverProvider);
-
-
 })(window, window.angular);

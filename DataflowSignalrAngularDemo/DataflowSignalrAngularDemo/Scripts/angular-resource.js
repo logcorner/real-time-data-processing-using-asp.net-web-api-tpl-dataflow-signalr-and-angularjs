@@ -522,7 +522,6 @@ angular.module('ngResource', ['ng']).
     };
 
     this.$get = ['$http', '$log', '$q', '$timeout', function($http, $log, $q, $timeout) {
-
       var noop = angular.noop,
           forEach = angular.forEach,
           extend = angular.extend,
@@ -602,7 +601,6 @@ angular.module('ngResource', ['ng']).
           // (If `\.` comes from a param value, it will be encoded as `%5C.`.)
           config.url = protocolAndIpv6 + url.replace(/\/(\\|%5C)\./, '/.');
 
-
           // set params - delegate param encoding to $http
           forEach(params, function(value, key) {
             if (!self.urlParams[key]) {
@@ -612,7 +610,6 @@ angular.module('ngResource', ['ng']).
           });
         }
       };
-
 
       function resourceFactory(url, paramDefaults, actions, options) {
         var route = new Route(url, options);
@@ -823,7 +820,6 @@ angular.module('ngResource', ['ng']).
             }
           };
 
-
           Resource.prototype['$' + name] = function(params, success, error) {
             if (isFunction(params)) {
               error = success; success = params; params = {};
@@ -844,6 +840,4 @@ angular.module('ngResource', ['ng']).
       return resourceFactory;
     }];
   });
-
-
 })(window, window.angular);

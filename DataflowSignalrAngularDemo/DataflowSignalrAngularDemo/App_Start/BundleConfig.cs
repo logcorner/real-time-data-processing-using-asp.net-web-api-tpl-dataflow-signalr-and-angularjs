@@ -19,7 +19,7 @@ namespace ApiSignalrAngularHub
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+            /*bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
                 "~/Scripts/jquery.signalR-*"
             ));
 
@@ -32,7 +32,7 @@ namespace ApiSignalrAngularHub
                 "~/app/app.js",
                 "~/app/services/monitorSvc.js",
                 "~/app/controllers/monitorCtrl.js"
-            ));
+            ));*/
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

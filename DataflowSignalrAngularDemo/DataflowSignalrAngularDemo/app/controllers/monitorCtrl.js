@@ -38,7 +38,7 @@
             });
         });
 
-        $scope.$parent.$on("TransformFileToFileOrderEntity", function (e, data) {
+        $scope.$parent.$on("TransformSalesOrderDetailEntity", function (e, data) {
             $scope.$apply(function () {
                 addFileOrderEntity(data);
             });

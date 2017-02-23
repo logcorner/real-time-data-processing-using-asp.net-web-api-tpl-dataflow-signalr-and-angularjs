@@ -19,8 +19,8 @@
                 $rootScope.$emit("LoadBalance", data);
             });
 
-            this.proxy.on('TransformFileToFileOrderEntity', function (data) {
-                $rootScope.$emit("TransformFileToFileOrderEntity", data);
+            this.proxy.on('TransformSalesOrderDetailEntity', function (data) {
+                $rootScope.$emit("TransformSalesOrderDetailEntity", data);
             });
         };
 
