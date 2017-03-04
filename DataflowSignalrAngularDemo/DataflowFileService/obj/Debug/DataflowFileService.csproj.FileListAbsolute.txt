@@ -28,3 +28,4 @@ C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\Data
 C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\Newtonsoft.Json.dll
 C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.dll
 C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.pdb
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.csprojResolveAssemblyReference.cache
