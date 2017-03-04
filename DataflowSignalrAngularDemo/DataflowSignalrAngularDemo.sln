@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{110A03
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSignalrAngularHub", "DataflowSignalrAngularDemo\ApiSignalrAngularHub.csproj", "{2C06A04B-08D7-46E2-8A4F-2C2204CCECEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalrAngularClient", "SignalrAngularClient\SignalrAngularClient.csproj", "{C0A4E023-7392-4057-8244-0C78B19E619D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataflowFileService", "DataflowFileService\DataflowFileService.csproj", "{97D3B41A-4A73-4C96-A2D6-2EC94D2C3ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalrAngularClient", "SignalrAngularClient\SignalrAngularClient.csproj", "{C0A4E023-7392-4057-8244-0C78B19E619D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +26,14 @@ Global
 		{2C06A04B-08D7-46E2-8A4F-2C2204CCECEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C06A04B-08D7-46E2-8A4F-2C2204CCECEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C06A04B-08D7-46E2-8A4F-2C2204CCECEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0A4E023-7392-4057-8244-0C78B19E619D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0A4E023-7392-4057-8244-0C78B19E619D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0A4E023-7392-4057-8244-0C78B19E619D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0A4E023-7392-4057-8244-0C78B19E619D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97D3B41A-4A73-4C96-A2D6-2EC94D2C3ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97D3B41A-4A73-4C96-A2D6-2EC94D2C3ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97D3B41A-4A73-4C96-A2D6-2EC94D2C3ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97D3B41A-4A73-4C96-A2D6-2EC94D2C3ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A4E023-7392-4057-8244-0C78B19E619D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A4E023-7392-4057-8244-0C78B19E619D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A4E023-7392-4057-8244-0C78B19E619D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A4E023-7392-4057-8244-0C78B19E619D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

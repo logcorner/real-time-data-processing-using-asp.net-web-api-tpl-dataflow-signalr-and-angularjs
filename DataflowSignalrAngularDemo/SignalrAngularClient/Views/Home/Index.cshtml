@@ -34,7 +34,7 @@
                 <span class="bold">CarrierTrackingNumber :</span> {{item.CarrierTrackingNumber }}
             </div>
 
-            <div>
+            <div ng-class="{'btn btn-success' : item.OrderQty <=100,'btn btn-info' : item.OrderQty >100,'btn btn-warning' : item.OrderQty > 10000}" >
                 <span class="bold">OrderQty :</span> {{item.OrderQty }}
             </div>
 
@@ -42,7 +42,7 @@
                 <span class="bold">PriceDiscount :</span> {{item.PriceDiscount }}
             </div>
 
-            <div>
+            <div ng-class="{'btn btn-success' : item.LineTotal <=100,'btn btn-info' : item.LineTotal >100,'btn btn-danger' : item.LineTotal > 10000}">
                 <span class="bold">LineTotal :</span> {{item.LineTotal }}
             </div>
 

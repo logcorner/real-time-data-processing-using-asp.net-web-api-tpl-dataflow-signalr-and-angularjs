@@ -29,7 +29,8 @@
 
         [Route("api/SalesOrderDetailEntity")]
         [HttpPost]
-        public async Task<IHttpActionResult> PostSalesOrderDetailEntity([FromBody] SalesOrderDetailEntity item)
+        public async Task<IHttpActionResult> PostSalesOrderDetailEntity(
+            [FromBody] SalesOrderDetailEntity item)
         {
             try
             {

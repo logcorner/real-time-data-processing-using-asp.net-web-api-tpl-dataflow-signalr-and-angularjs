@@ -22,3 +22,9 @@ C:\DATA\Git\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\DataflowFil
 C:\DATA\Git\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\DataflowFileService.pdb
 C:\DATA\Git\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.dll
 C:\DATA\Git\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.pdb
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\DataflowFileService.dll.config
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\DataflowFileService.dll
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\DataflowFileService.pdb
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\bin\Debug\Newtonsoft.Json.dll
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.dll
+C:\TEAMPROJECT\GIT\DataflowSignalrAngularDemo\DataflowFileService\obj\Debug\DataflowFileService.pdb

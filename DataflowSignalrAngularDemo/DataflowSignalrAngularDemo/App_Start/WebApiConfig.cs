@@ -11,9 +11,9 @@ namespace ApiSignalrAngularHub
 
             config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new { id = RouteParameter.Optional });
 
-            JsonSerializerSettings serializerSettings = GlobalConfiguration.Configuration
-            .Formatters.JsonFormatter.SerializerSettings;
-            serializerSettings.TypeNameHandling = TypeNameHandling.Auto;
+            //JsonSerializerSettings serializerSettings = GlobalConfiguration.Configuration
+            //.Formatters.JsonFormatter.SerializerSettings;
+            //serializerSettings.TypeNameHandling = TypeNameHandling.Auto;
             config.Formatters.JsonFormatter.SerializerSettings.MetadataPropertyHandling = MetadataPropertyHandling.Ignore;
         }
     }

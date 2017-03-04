@@ -11,19 +11,22 @@ namespace DataflowFileService
 {
     public class OrderService
     {
-        private BufferBlock<SalesOrderDetailEntity> _salesOrderDetailEntityBufferBlock;
+        private readonly ExecutionDataflowBlockOptions _blockConfiguration =
+            new ExecutionDataflowBlockOptions()
+            {
+                MaxDegreeOfParallelism = Environment.ProcessorCount,
+            };
+
         private readonly BufferBlock<OrderEntity> _bufferBlock = new BufferBlock<OrderEntity>();
         private TransformManyBlock<OrderEntity, OrderDetailEntity> _receptorBlockOne;
         private TransformManyBlock<OrderEntity, OrderDetailEntity> _receptorBlockTwo;
         private TransformManyBlock<OrderEntity, OrderDetailEntity> _receptorBlockThee;
         private ActionBlock<SalesOrderDetailEntity> _loggerBlock;
-        private TransformBlock<OrderDetailEntity, SalesOrderDetailEntity> _transformBlockCalculateOrderDetail;
 
-        private readonly ExecutionDataflowBlockOptions _blockConfiguration = new ExecutionDataflowBlockOptions()
-        {
-            NameFormat = "Type:{0},Id:{1}",
-            MaxDegreeOfParallelism = 4,
-        };
+        private TransformBlock<OrderDetailEntity, SalesOrderDetailEntity>
+                                                          _transformBlockCalculateSalesOrderDetail;
+
+        private BufferBlock<SalesOrderDetailEntity> _salesOrderDetailEntityBufferBlock;
 
         public async Task Execute()
         {
@@ -74,11 +77,13 @@ namespace DataflowFileService
         public void BuildFileReceptionWorkflow()
         {
             var nonGreedy = new ExecutionDataflowBlockOptions() { BoundedCapacity = 1 };
+
             var flowComplete = new DataflowLinkOptions() { PropagateCompletion = true };
 
-            _transformBlockCalculateOrderDetail = new TransformBlock<OrderDetailEntity, SalesOrderDetailEntity>(x => CalculateOrderDetail(x), _blockConfiguration);
+            _transformBlockCalculateSalesOrderDetail = new TransformBlock<OrderDetailEntity, SalesOrderDetailEntity>
+                (x => CalculateOrderDetail(x), _blockConfiguration);
 
-            _transformBlockCalculateOrderDetail
+            _transformBlockCalculateSalesOrderDetail
                .Completion
                .ContinueWith(
                    dbt =>
@@ -91,23 +96,30 @@ namespace DataflowFileService
                    },
                    TaskContinuationOptions.OnlyOnFaulted);
 
-            _loggerBlock = new ActionBlock<SalesOrderDetailEntity>(x => Console.WriteLine(string.Format(" Printing {0}", x.SalesPersonName)));
+            _loggerBlock = new ActionBlock<SalesOrderDetailEntity>(x => Console.WriteLine(string.Format(" Printing {0}",
+                x.SalesPersonName)));
 
             _salesOrderDetailEntityBufferBlock = new BufferBlock<SalesOrderDetailEntity>();
-            _receptorBlockTwo = new TransformManyBlock<OrderEntity, OrderDetailEntity>(i => FindOrders("Receiver A", i), nonGreedy);
-            _receptorBlockThee = new TransformManyBlock<OrderEntity, OrderDetailEntity>(i => FindOrders("Receiver B", i), nonGreedy);
-            _receptorBlockOne = new TransformManyBlock<OrderEntity, OrderDetailEntity>(i => FindOrders("Receiver C", i), nonGreedy);
+            _receptorBlockTwo = new TransformManyBlock<OrderEntity, OrderDetailEntity>
+                                                                            (i => FindOrders("Receiver A", i), nonGreedy);
+            _receptorBlockThee = new TransformManyBlock<OrderEntity, OrderDetailEntity>
+                                                                            (i => FindOrders("Receiver B", i), nonGreedy);
+            _receptorBlockOne = new TransformManyBlock<OrderEntity, OrderDetailEntity>
+                                                                             (i => FindOrders("Receiver C", i), nonGreedy);
 
             _bufferBlock.LinkTo(_receptorBlockOne, flowComplete);
             _bufferBlock.LinkTo(_receptorBlockTwo, flowComplete);
             _bufferBlock.LinkTo(_receptorBlockThee, flowComplete);
 
-            _receptorBlockOne.LinkTo(_transformBlockCalculateOrderDetail);
-            _receptorBlockTwo.LinkTo(_transformBlockCalculateOrderDetail);
-            _receptorBlockThee.LinkTo(_transformBlockCalculateOrderDetail);
-            _transformBlockCalculateOrderDetail.LinkTo(_salesOrderDetailEntityBufferBlock);
-            _salesOrderDetailEntityBufferBlock.LinkTo(_loggerBlock);
-            _transformBlockCalculateOrderDetail.Completion.ContinueWith(t => _salesOrderDetailEntityBufferBlock.Complete());
+            _receptorBlockOne.LinkTo(_transformBlockCalculateSalesOrderDetail, flowComplete);
+            _receptorBlockTwo.LinkTo(_transformBlockCalculateSalesOrderDetail, flowComplete);
+            _receptorBlockThee.LinkTo(_transformBlockCalculateSalesOrderDetail, flowComplete);
+            _transformBlockCalculateSalesOrderDetail.LinkTo(_salesOrderDetailEntityBufferBlock, flowComplete);
+            _salesOrderDetailEntityBufferBlock.LinkTo(_loggerBlock, flowComplete);
+
+            Task.WhenAll(_salesOrderDetailEntityBufferBlock.Completion,
+                         _transformBlockCalculateSalesOrderDetail.Completion)
+                         .ContinueWith(c => _bufferBlock.Complete());
         }
 
         private async Task<IEnumerable<OrderDetailEntity>> FindOrders(string receiverName, OrderEntity orderEntity)
