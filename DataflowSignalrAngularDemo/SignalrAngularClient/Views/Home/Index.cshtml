@@ -1,10 +1,12 @@
 ﻿@{
     ViewBag.Title = "Receiver";
 }
-<h4></h4>
-<p>This view subscribes to the dashboardHub</p>
+<h2>This view subscribes to the dashboardHub</h2>
+<h3> Hub Server must start and running before client. If the engine does not start, please refresh this page,   </h3>
+<p></p>
 <div data-ng-controller="dashboardCtrl as wdgt">
     <span class="bold h4">Reveivers</span>
+    <p></p>
     <ul>
         <li ng-repeat="dashboard in Processor">
             <div ng-class="{'btn btn-success' : dashboard.Name=='Receiver A','btn btn-info' : dashboard.Name=='Receiver B','btn btn-warning' : dashboard.Name=='Receiver C'}">
@@ -34,7 +36,7 @@
                 <span class="bold">CarrierTrackingNumber :</span> {{item.CarrierTrackingNumber }}
             </div>
 
-            <div ng-class="{'btn btn-success' : item.OrderQty <=100,'btn btn-info' : item.OrderQty >100,'btn btn-warning' : item.OrderQty > 10000}" >
+            <div ng-class="{'btn btn-success' : item.OrderQty <=100,'btn btn-info' : item.OrderQty >100,'btn btn-warning' : item.OrderQty > 10000}">
                 <span class="bold">OrderQty :</span> {{item.OrderQty }}
             </div>
 
@@ -46,7 +48,8 @@
                 <span class="bold">LineTotal :</span> {{item.LineTotal }}
             </div>
 
-            <div>                <span class="bold">Date :</span> {{item.Date }}
+            <div>
+                <span class="bold">Date :</span> {{item.Date }}
             </div>
             <div>
 

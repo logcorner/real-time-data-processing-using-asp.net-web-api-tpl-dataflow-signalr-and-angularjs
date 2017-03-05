@@ -8,8 +8,7 @@ namespace ApiSignalrAngularHub.Hubs
     public abstract class SignalRBase<THub> : ApiController where THub : IHub
     {
         private readonly Lazy<IHubContext> _hub = new Lazy<IHubContext>(
-            () => GlobalHost.ConnectionManager.GetHubContext<THub>()
-        );
+            () => GlobalHost.ConnectionManager.GetHubContext<THub>());
 
         protected IHubContext Hub
         {
